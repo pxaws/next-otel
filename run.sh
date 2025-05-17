@@ -1,3 +1,12 @@
+# install dependencies
+npm install 
+
+# build the standalone 
+./node_modules/.bin/next build
+
+# copy static files
+cp -r .next/static .next/standalone/.next/
+
 export OTEL_METRICS_EXPORTER=none 
 export OTEL_LOGS_EXPORTER=none 
 export OTEL_AWS_APPLICATION_SIGNALS_ENABLED=true 
@@ -8,7 +17,9 @@ export OTEL_AWS_APPLICATION_SIGNALS_EXPORTER_ENDPOINT=http://localhost:4316/v1/m
 export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://localhost:4316/v1/traces 
 export OTEL_TRACES_EXPORTER=console 
 export OTEL_RESOURCE_ATTRIBUTES="service.name=nextjs" 
-export NODE_OPTIONS='--import @aws/aws-distro-opentelemetry-node-autoinstrumentation/register --experimental-loader=@opentelemetry/instrumentation/hook.mjs'
+# export NODE_OPTIONS='--import @aws/aws-distro-opentelemetry-node-autoinstrumentation/register --experimental-loader=@opentelemetry/instrumentation/hook.mjs'
 
-node ./node_modules/.bin/next dev
 
+# run the server.js created by next.js standalone mode
+cd .next/standalone
+node server.js

@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "@aws/aws-distro-opentelemetry-node-autoinstrumentation": "^0.6.0",
-    "@opentelemetry/instrumentation": "^0.54.0",
     "next": "^15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
